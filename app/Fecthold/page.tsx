@@ -1,9 +1,16 @@
-const fetchUsers = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+import React from "react";
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch");
-  }
+const page = () => {
+  const fetchUsers = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
-  return res.json();
+    if (!res.ok) {
+      throw new Error("Failed to fetch");
+    }
+
+    return res.json();
+  };
+  return <div>hshshs</div>;
 };
+
+export default page;
