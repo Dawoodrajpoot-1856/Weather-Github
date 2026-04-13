@@ -9,9 +9,10 @@ export default function Header() {
 
   return (
     <header className="bg-black text-white shadow-md">
-      <div className="max-w-6xl mx-auto h-25 flex items-center justify-between px-6">
+      <div className="max-w-6xl mx-auto h-24 flex items-center justify-between px-6">
+        {/* Weather */}
         <div className="text-sm font-medium">
-          <h1>Weather:</h1>
+          <h1 className="font-bold">Weather:</h1>
           {weather ? (
             <p>
               {cityName} :{" "}
@@ -47,7 +48,7 @@ export default function Header() {
 
         {/* GitHub User */}
         <div>
-          <h1>User Name:</h1>
+          <h1 className="font-bold">User Name:</h1>
           {githubUser ? (
             <div className="flex items-center gap-3">
               <img
