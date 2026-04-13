@@ -20,19 +20,17 @@ export default function GithubUser() {
   });
 
   useEffect(() => {
-    if (data) {
-      dispatch(setGithubUser(data));
-    }
+    if (data) dispatch(setGithubUser(data));
   }, [data, dispatch]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-400">
-      <div className="bg-gray-200 w-[380px] p-6 rounded-xl shadow-md">
-        <h1 className="text-2xl font-semibold text-center mb-5">
+    <div className="min-h-screen flex items-center justify-center bg-gray-400 px-4">
+      <div className="bg-gray-200 w-full max-w-md p-4 sm:p-6 rounded-xl shadow-md">
+        <h1 className="text-xl sm:text-2xl font-semibold text-center mb-5">
           GitHub User Search
         </h1>
 
-        <div className="flex gap-2 mb-5">
+        <div className="flex flex-col sm:flex-row gap-2 mb-5">
           <input
             type="text"
             placeholder="Enter username..."
@@ -43,7 +41,7 @@ export default function GithubUser() {
 
           <button
             onClick={() => setSearchUser(username)}
-            className="bg-black text-white px-4 rounded-md"
+            className="bg-black text-white px-4 py-2 rounded-md"
           >
             Search
           </button>
@@ -57,23 +55,23 @@ export default function GithubUser() {
             <img
               src={data.avatar_url}
               alt="avatar"
-              className="w-24 h-24 rounded-full mx-auto mb-3"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-3"
             />
 
-            <h2 className="text-xl font-semibold">{data.login}</h2>
+            <h2 className="text-lg sm:text-xl font-semibold">{data.login}</h2>
 
-            <div className="flex justify-center gap-6 mt-4">
-              <div>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
+              <div className="min-w-[80px]">
                 <p className="font-bold">{data.public_repos}</p>
                 <p className="text-gray-500 text-sm">Repos</p>
               </div>
 
-              <div>
+              <div className="min-w-[80px]">
                 <p className="font-bold">{data.followers}</p>
                 <p className="text-gray-500 text-sm">Followers</p>
               </div>
 
-              <div>
+              <div className="min-w-[80px]">
                 <p className="font-bold">{data.following}</p>
                 <p className="text-gray-500 text-sm">Following</p>
               </div>

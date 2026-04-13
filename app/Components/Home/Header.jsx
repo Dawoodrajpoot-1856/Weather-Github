@@ -9,10 +9,11 @@ export default function Header() {
 
   return (
     <header className="bg-black text-white shadow-md">
-      <div className="max-w-6xl mx-auto h-24 flex items-center justify-between px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
         {/* Weather */}
-        <div className="text-sm font-medium">
+        <div className="text-sm text-center sm:text-left">
           <h1 className="font-bold">Weather:</h1>
+
           {weather ? (
             <p>
               {cityName} :{" "}
@@ -26,7 +27,7 @@ export default function Header() {
         </div>
 
         {/* Navigation */}
-        <ul className="flex gap-8 text-lg font-semibold">
+        <ul className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm sm:text-lg font-semibold">
           <li>
             <Link href="/" className="hover:text-gray-400 transition">
               Home
@@ -47,19 +48,20 @@ export default function Header() {
         </ul>
 
         {/* GitHub User */}
-        <div>
+        <div className="text-center sm:text-right text-sm">
           <h1 className="font-bold">User Name:</h1>
+
           {githubUser ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center sm:justify-end gap-2 mt-1">
               <img
                 src={githubUser.avatar_url}
                 alt="avatar"
-                className="w-9 h-9 rounded-full border"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border"
               />
               <p className="font-medium">{githubUser.login}</p>
             </div>
           ) : (
-            <p className="text-gray-400 text-sm">No User</p>
+            <p className="text-gray-400 text-xs sm:text-sm">No User</p>
           )}
         </div>
       </div>
