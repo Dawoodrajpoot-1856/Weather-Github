@@ -1,28 +1,66 @@
+"use client";
+
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function Header() {
-  return (
-    <header className="bg-black text-white">
-      <div className="max-w-6xl h-20 mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-xl font-bold">Weather App</h1>
+  const { cityName, weather } = useSelector((state) => state.weather);
+  const githubUser = useSelector((state) => state.github.user);
 
-        <ul className="flex gap-6 text-xl">
+  return (
+    <header className="bg-black text-white shadow-md">
+      <div className="max-w-6xl mx-auto h-25 flex items-center justify-between px-6">
+        <div className="text-sm font-medium">
+          <h1>Weather:</h1>
+          {weather ? (
+            <p>
+              {cityName} :{" "}
+              <span className="font-bold">
+                {weather.apparent_temperature_max[0]}°
+              </span>
+            </p>
+          ) : (
+            <p className="text-gray-400">No Weather</p>
+          )}
+        </div>
+
+        {/* Navigation */}
+        <ul className="flex gap-8 text-lg font-semibold">
           <li>
-            <Link href="/" className="hover:text-gray-400">
+            <Link href="/" className="hover:text-gray-400 transition">
               Home
             </Link>
           </li>
+
           <li>
-            <Link href="/weather" className="hover:text-gray-400">
+            <Link href="/weather" className="hover:text-gray-400 transition">
               Weather
             </Link>
           </li>
+
           <li>
-            <Link href="gitub" className="hover:text-gray-400">
+            <Link href="/gitub" className="hover:text-gray-400 transition">
               GitHub
             </Link>
           </li>
         </ul>
+
+        {/* GitHub User */}
+        <div>
+          <h1>User Name:</h1>
+          {githubUser ? (
+            <div className="flex items-center gap-3">
+              <img
+                src={githubUser.avatar_url}
+                alt="avatar"
+                className="w-9 h-9 rounded-full border"
+              />
+              <p className="font-medium">{githubUser.login}</p>
+            </div>
+          ) : (
+            <p className="text-gray-400 text-sm">No User</p>
+          )}
+        </div>
       </div>
     </header>
   );
